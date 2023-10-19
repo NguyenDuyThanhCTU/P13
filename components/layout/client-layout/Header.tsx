@@ -1,316 +1,79 @@
 "use client";
-import React, { useEffect, useState } from "react";
-
-import { RxCross1 } from "react-icons/rx";
-import { MdOutlineFormatListBulleted } from "react-icons/md";
-import { AiFillCaretRight } from "react-icons/ai";
-import { FiSearch } from "react-icons/fi";
-import { useStateProvider } from "@context/StateProvider";
-import { useData } from "@context/DataProviders";
+import { HeaderItems } from "@assets/item";
 import Link from "next/link";
-import { HeaderItems, TypeProductItems } from "@assets/item";
-import DropDown from "./Items/DropDown";
+import React from "react";
+import {
+  AiOutlineDown,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 
 const Header = () => {
-  const [isSelected, setIsSelected] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [elementTop, setElementTop] = useState(95);
-  const [Hidden, setHidden] = useState(false);
-  const [IsTranslate, setTranslate] = useState(false);
-  const [Keyword, setKeyword] = useState("");
-
-  const { TradeMarkData, productTypes } = useData();
-  const { setSearch } = useStateProvider();
-
-  const targetPosition = 1;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset || document.documentElement.scrollTop;
-      setScrollPosition(position);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (scrollPosition > targetPosition) {
-      setElementTop(0);
-      setTranslate(true);
-    } else {
-      setElementTop(95);
-      setTranslate(false);
-    }
-  }, [scrollPosition]);
-
-  function HandleSearch() {
-    setKeyword("");
-  }
-
+  const SupportItems = [
+    {
+      label: "Hướng dẫn sử dụng",
+      value: "huong-dan-su-dung",
+    },
+    {
+      label: "Catalogue sản phẩm",
+      value: "catalogue-san-pham",
+    },
+  ];
   return (
-    <div className="d:h-[126px] font-LexendDeca  p:h-auto">
-      <div className="bg-white ">
-        <div className=" bg-none h-full relative  bg-white ">
-          {/* <---------------------------------------------------------- Desktop ----------------------------------------------------------> */}
-          {/* Main header */}
-          <div className=" w-full    text-[#1b365d] h-[92px] z-50 p:hidden d:flex justify-center">
-            <div className="flex justify-between first-letter: items-center w-[1100px] ">
-              <div className="flex items-center gap-10">
-                <Link href="/">
-                  <div className="h-[92px] p-1">
-                    <img
-                      src={TradeMarkData.websiteLogo}
-                      alt="img"
-                      className="w-full h-full"
-                    />
-                  </div>
-                </Link>
-                <div className=" text-[#2d94c4]">
-                  <div className="flex items-center flex-col">
-                    <h3 className="uppercase text-[24px] font-bold">
-                      {TradeMarkData.websiteName}
-                    </h3>
-                    <span className="text-redPrimmary">
-                      Uy tín - Chất lượng - Giá rẻ
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-20 items-center">
-                <div className="relative text-black group  cursor-pointer">
-                  <input
-                    type="text"
-                    value={Keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    className="p-2 px-4 outline-none rounded-full bg-white border-mainpink border w-[300px]"
-                  />
-                  <Link href={`/san-pham/${Keyword}`}>
-                    <FiSearch
-                      onClick={() => {
-                        HandleSearch();
-                      }}
-                      className={`${
-                        Keyword
-                          ? "-right-10 bg-[#F67D08] text-white"
-                          : "right-[4px] bg-white text-[#F67D08]"
-                      } group-hover:bg-[#F67D08] group-hover:text-white inline-block  w-[36px] h-[36px] p-2 font-bold rounded-full  absolute  bottom-[3px] group-hover:-right-10  duration-300 hover:scale-110`}
-                    />
-                  </Link>
-                  <div
-                    className={`${
-                      Keyword ? "-top-3 left-5  " : "top-2 left-4"
-                    } bg-white absolute   group-hover:-top-3 group-hover:left-5 px-2 duration-300`}
-                  >
-                    Tìm kiếm
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="shadow-xl">
+      <div className="bg-blue-400 py-1 h-[30px]w-full text-white text-[14px] flex justify-center items-center">
+        Miễn phí vận chuyển với đơn hàng trên 1.000.000
+      </div>
+      <div className="w-[1300px] mx-auto">
+        <div className=" w-full py-5   flex justify-between items-center ">
+          <div></div>
+          <div className="">
+            <img
+              src="https://file.hstatic.net/200000235187/file/logohome_b583c2c7d30b40f68d0d0450c6d7243d.jpg"
+              alt="logo"
+            />
           </div>
-          {/* Sub Header */}
-          <div className="d:flex flex-col p:hidden w-full  items-center">
-            <div
-              className={`fixed z-10 ${
-                IsTranslate
-                  ? `w-full bg-white text-black `
-                  : " w-[1600px] bg-gradient-to-b from-[#c5161d] via-[#de393e]  to-[#d0191e] text-white  "
-              }   duration-300 h-[69px] rounded-lg flex justify-center px-5  items-center text-normal font-semibold gap-16`}
-              style={{ top: `${elementTop}px` }}
-            >
-              {HeaderItems.map((items, idx) => {
-                return (
-                  <div className="relative " key={idx}>
-                    <div className="group/main">
-                      <div
-                        className={`  uppercase text-[18px] flex items-center justify-between  gap-2  hover:text-mainpink duration-500  ${
-                          IsTranslate
-                            ? ` ${
-                                isSelected === idx
-                                  ? "text-mainpink"
-                                  : "text-black"
-                              }`
-                            : `text-white`
-                        }
-  
-                         `}
-                        onClick={() => {
-                          setIsSelected(idx);
-                        }}
-                      >
-                        <Link href={`/${items.link}`}>
-                          {" "}
-                          <div> {items.name}</div>
-                        </Link>
-
-                        {items.name === "Sản phẩm" && (
-                          <AiFillCaretRight className="group-hover/main:rotate-90 duration-500" />
-                        )}
-                      </div>
-                      {items.name === "Sản phẩm" && (
-                        <div className="group-hover/main:block hidden absolute left-0 mt-5 w-max bg-mainred  border   shadow-lg  rounded-b-sm  z-50">
-                          <div className="absolute h-6 w-full bg-none -top-6"></div>
-                          <div className="">
-                            {TypeProductItems.map((items: any, idx: number) => {
-                              const sort = productTypes.filter(
-                                (item: any) => item.parentUrl === items.value
-                              );
-
-                              return (
-                                <div
-                                  key={idx}
-                                  className=" group/lv1    relative font-light text-white    border-b"
-                                >
-                                  <Link href={`${`/san-pham/${items.value}`}`}>
-                                    <div className="hover:bg-[#bf0000] py-4 px-6 duration-300 flex justify-between items-center  w-full gap-3">
-                                      <p>{items.label}</p>
-                                      {sort.length > 0 && (
-                                        <AiFillCaretRight
-                                          className={` rotate-90 group-hover/lv1:rotate-0 duration-500 text-white`}
-                                        />
-                                      )}
-                                    </div>
-                                  </Link>
-
-                                  {sort.length > 0 && (
-                                    <>
-                                      <div className="hidden group-hover/lv1:block absolute top-0 left-full mt-0 w-max bg-mainred  shadow-lg">
-                                        <div className="">
-                                          {sort.map(
-                                            (items: any, key: number) => (
-                                              <>
-                                                <div
-                                                  key={idx}
-                                                  className=" group/lv2    relative font-light text-white    border-b"
-                                                >
-                                                  <Link
-                                                    href={`${`/san-pham/${items.typeUrl}`}`}
-                                                  >
-                                                    <div className="hover:bg-[#bf0000] py-4 px-6 duration-300 flex justify-between items-center  w-full gap-3">
-                                                      <p>{items.type}</p>
-                                                      {sort.length > 0 && (
-                                                        <AiFillCaretRight
-                                                          className={` rotate-90 group-hover/lv1:rotate-0 duration-500 text-white`}
-                                                        />
-                                                      )}
-                                                    </div>
-                                                  </Link>
-                                                  {items.children.length >
-                                                    0 && (
-                                                    <>
-                                                      <div className="hidden group-hover/lv2:block absolute top-0 left-full mt-0 w-max bg-mainred  shadow-lg">
-                                                        <div className="">
-                                                          {items.children.map(
-                                                            (
-                                                              items: any,
-                                                              idx: number
-                                                            ) => (
-                                                              <>
-                                                                <div
-                                                                  key={idx}
-                                                                  className=" group/lv2    relative font-light text-white    border-b"
-                                                                >
-                                                                  <Link
-                                                                    href={`${`/san-pham/${items.childrenUrl}`}`}
-                                                                  >
-                                                                    <div className="hover:bg-[#bf0000] py-4 px-6 duration-300 flex justify-between items-center  w-full gap-3">
-                                                                      <p>
-                                                                        {
-                                                                          items.children
-                                                                        }
-                                                                      </p>
-                                                                    </div>
-                                                                  </Link>
-                                                                </div>
-                                                              </>
-                                                            )
-                                                          )}
-                                                        </div>
-                                                      </div>
-                                                    </>
-                                                  )}
-                                                </div>
-                                              </>
-                                            )
-                                          )}
-                                        </div>
-                                      </div>
-                                    </>
-                                  )}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div
-                      className={` ${
-                        isSelected === idx
-                          ? IsTranslate
-                            ? "w-full bg-mainpink"
-                            : "w-full bg-white"
-                          : "w-0"
-                      }  duration-500 h-2 rounded-3xl absolute -bottom-[23px]`}
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="text-[30px] flex gap-2">
+            <AiOutlineSearch />
+            <AiOutlineShoppingCart />
           </div>
-
-          {/* <---------------------------------------------------------- Mobile ----------------------------------------------------------> */}
-          <div className="p:block d:hidden w-full  ">
-            <div className="flex justify-between  items-center ">
-              <Link href="/">
-                <img
-                  src={TradeMarkData.websiteLogo}
-                  alt="logo"
-                  className="h-[50px] m-5 "
-                />
-              </Link>
-              <div className="flex items-center text-[60px]">
-                {Hidden ? (
-                  <RxCross1
-                    className="bg-redPrimmary text-white p-2 "
-                    onClick={() => setHidden(!Hidden)}
-                  />
-                ) : (
-                  <MdOutlineFormatListBulleted
-                    className="bg-redPrimmary text-white p-2 "
-                    onClick={() => setHidden(!Hidden)}
-                  />
+        </div>
+        <div className="flex  gap-8 w-full justify-center font-LexendDeca font-extralight">
+          {HeaderItems.map((item: any, idx: number) => (
+            <div className="relative group" key={idx}>
+              <Link
+                className="hover:text-blue-400 duration-300 flex items-center gap-2"
+                href={`/${item.link}`}
+              >
+                <p> {item.name}</p>
+                {item.name === "Hỗ trợ" && (
+                  <AiOutlineDown className="text-[10px] group-hover:rotate-180 duration-300" />
                 )}
-              </div>
-            </div>
-            <div
-              className={`${
-                Hidden ? "h-screen" : "h-0 "
-              } w-full duration-700 bg-[rgba(253,253,253,0.9)] overflow-y-scroll`}
-            >
-              {HeaderItems.map((items: any, idx: any) => {
-                const sort = productTypes.filter(
-                  (item: any) => item.parent === items.link
-                );
-
-                return (
-                  <div key={idx}>
-                    <DropDown
-                      idx={idx}
-                      dropdown={sort}
-                      content={items.name}
-                      link={items.link}
-                      setHidden={setHidden}
-                    />
+              </Link>
+              <div className="h-[2px] bg-gray-400 w-0 group-hover:w-full duration-300 mt-3 "></div>
+              {item.name === "Hỗ trợ" && (
+                <div className="flex flex-col top-5 absolute">
+                  <div className="bg-none w-full h-4"></div>
+                  <div className=" top-9 hidden group-hover:block duration-300">
+                    <div className=" flex flex-col bg-white shadow-md border-t-2 border-gray-500 ">
+                      {SupportItems.map((items: any, idx: number) => (
+                        <Link
+                          key={idx}
+                          href={`/bai-viet/${items.value}`}
+                          className="w-max  border-b"
+                        >
+                          <p className="py-2 px-2 hover:text-blue-400 duration-300">
+                            {" "}
+                            {items.label}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                );
-              })}
+                </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

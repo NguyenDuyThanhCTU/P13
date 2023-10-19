@@ -1,57 +1,82 @@
 "use client";
-import { PolicyItems } from "@assets/item";
+import { PolicyTopics } from "@assets/item";
 import { useData } from "@context/DataProviders";
 import Link from "next/link";
 import React from "react";
+import { BiLogoTelegram } from "react-icons/bi";
+import { GiRotaryPhone } from "react-icons/gi";
+import { IoLocation } from "react-icons/io5";
 
 const Footer = () => {
-  const { TradeMarkData, ContactData } = useData();
-
+  const { ContactData } = useData();
   return (
-    <div className="bg-[url(https://yensaotrison.com/upload/hinhanh/bg-ft-3451_1366x390.jpg)]">
-      <div className="w-[1300px] mx-auto py-10 grid p:grid-cols-1 d:grid-cols-3  text-white font-UTMAmerican p-2 gap-5">
-        <div>
-          <h3 className="text-mainyellow text-[30px] uppercase font-bold leading-10 ">
-            {TradeMarkData.websiteName}
-          </h3>
-          <div className="text-[20px] mt-8 flex flex-col gap-2">
-            <p>Điện thoại: {ContactData.phone}</p>
-            <p>Email: {ContactData.email}</p>
-            <p>Website: {ContactData.website}</p>
-            <p>Giờ làm việc: {ContactData.worktime}</p>
-            <p>Địa chỉ: {ContactData.address}</p>
+    <>
+      <div className="grid gap-4 grid-cols-6 w-[1300px] mx-auto font-LexendDeca font-extralight">
+        <div className="col-span-2">
+          <h2 className="text-[18px] font-normal">
+            Homeprosec - Nhà Công Nghệ
+          </h2>
+          <div className="mt-4 flex flex-col text-[14px]">
+            <p>
+              Homeprosec - Nhà Công Nghệ Chuyên các loại khóa cửa điện tử, khóa
+              cổng vân tay, chuông cửa màn hình.
+            </p>
+            <div>
+              <img
+                src="https://file.hstatic.net/1000300454/file/logo_bct_019590229b4c4dfda690236b67f7aff4.png"
+                alt="logo"
+              />
+            </div>
           </div>
         </div>
         <div>
-          <div className="text-[18px]">
-            <h3 className="uppercase">Chính sách</h3>
-            <div className="h-1 w-10 bg-white"></div>
-          </div>
-          <div className="flex flex-col gap-3 mt-8">
-            {PolicyItems.map((item: any, idx: number) => {
-              if (item.type === "policy") {
-                return (
-                  <Link key={idx} href={`/bai-viet/${item.url}`}>
-                    <div className="hover:text-mainyellow">
-                      <p>- {item.title}</p>
-                    </div>
-                  </Link>
-                );
-              }
-            })}
+          <h2 className="text-[18px] font-normal">Liên kết</h2>
+          <div className="mt-4 flex flex-col text-[14px] gap-2">
+            {PolicyTopics.map((item: any, idx: number) => (
+              <Link
+                key={idx}
+                href={`/bai-viet/${item.value}`}
+                className="hover:text-blue-400 duration-300"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="h-52 overflow-hidden">
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdichvuquangcaotrongoicantho%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-            width="340"
-            height="500"
-            scrolling="no"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
+        <div>
+          <h2 className="text-[18px] font-normal">Thông tin liên hệ</h2>
+          <div className="mt-4 flex flex-col gap-2 text-[14px]">
+            <div className=" flex gap-3">
+              <div className="flex mt-1">
+                <IoLocation className="" />
+              </div>
+              <span>{ContactData.address}</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <GiRotaryPhone />
+              <p>{ContactData.phone}</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <BiLogoTelegram />
+              <p>{ContactData.gmail}</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-2">
+          <h2 className="text-[18px] font-normal">Fanpage</h2>
+          <div className="h-52 overflow-hidden mt-4">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdichvuquangcaotrongoicantho%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="340"
+              height="500"
+              scrolling="no"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

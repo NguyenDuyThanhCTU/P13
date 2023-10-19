@@ -39,13 +39,7 @@ const ListPost: React.FC = () => {
       setIsOption(idx);
     }
   };
-
-  const HandleEdit = (id: string): void => {
-    setUpdateId(id);
-    setDropDown("add-post");
-    setIsOption(0);
-  };
-
+  console.log(Posts);
   return (
     <div className="flex-[65%]  border rounded-xl flex flex-col gap-10">
       <div className=" rounded-xl m-5 h-[400px] overflow-y-scroll">
@@ -62,23 +56,13 @@ const ListPost: React.FC = () => {
 
               <p className="truncate ">{data.title}</p>
 
-              {data.type === "news" ? (
-                <>
-                  {" "}
-                  <Image
-                    className="  w-14 h-14 rounded-lg object-cover"
-                    src={data.image}
-                  />
-                </>
-              ) : (
-                <>
-                  {" "}
-                  <Image
-                    className="  w-14 h-14 rounded-lg object-cover"
-                    src="https://firebasestorage.googleapis.com/v0/b/noithatdaiphattravinh.appspot.com/o/logoSaleNoti.png?alt=media&token=63c66b17-aa49-4c45-ab51-9661eee6ca2f"
-                  />
-                </>
-              )}
+              <>
+                {" "}
+                <Image
+                  className="  w-14 h-14 rounded-lg object-cover"
+                  src="https://firebasestorage.googleapis.com/v0/b/noithatdaiphattravinh.appspot.com/o/logoSaleNoti.png?alt=media&token=63c66b17-aa49-4c45-ab51-9661eee6ca2f"
+                />
+              </>
 
               <div className="flex gap-5 items-center">
                 <div>
@@ -105,27 +89,8 @@ const ListPost: React.FC = () => {
                   {isOption === idx + 1 && (
                     <div className="w-[80px] bg-white opacity-90 absolute -top-2 h-8 right-10 rounded-lg  ">
                       <div className="mx-3 flex  justify-between text-[24px] h-full items-center ">
-                        <FiEdit
-                          className="text-green-600 hover:scale-125 duration-300"
-                          onClick={() => {
-                            HandleEdit(data.id);
-                          }}
-                        />
-                        <Popconfirm
-                          title="Xóa sản phẩm"
-                          description="Bạn muốn xóa sản phẩm này?"
-                          onConfirm={() => {
-                            HandleDelete(data.id);
-                          }}
-                          onCancel={() => {
-                            message.error("Sản phẩm chưa được xóa!");
-                          }}
-                          okText="Yes"
-                          okType="danger"
-                          cancelText="No"
-                        >
-                          <MdDeleteForever className="text-red-600 hover:scale-125 duration-300" />
-                        </Popconfirm>
+                        <FiEdit className="text-green-600 hover:scale-125 duration-300" />
+                        <MdDeleteForever className="text-red-600 hover:scale-125 duration-300" />
                       </div>
                       <div className="absolute bg-none w-3 h-8 top-0 -left-2"></div>
                     </div>

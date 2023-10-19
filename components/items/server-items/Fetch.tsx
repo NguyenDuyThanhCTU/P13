@@ -76,7 +76,9 @@ const Fetch: React.FC = () => {
     getAllDocuments("videos").then((data: any) => {
       setVideos(data?.reverse());
     });
-
+    getProducts("posts").then((data: any) => {
+      setPosts(data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -141,6 +143,7 @@ const Fetch: React.FC = () => {
       getProducts("posts").then((data: any) => {
         setPosts(data);
       });
+      setIsRefetch("done");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -15,12 +15,8 @@ const AdminDropDown = () => {
         isDropDown === "" ? "h-0" : "h-[100vh]"
       }`}
     >
-      {isDropDown === "add-news" ? (
-        <AddPost type="news" />
-      ) : isDropDown === "add-gallery" ? (
-        <AddPost type="gallery" />
-      ) : isDropDown === "add-TravelHandbook" ? (
-        <AddPost type="TravelHandbook" />
+      {isDropDown === "add-post" ? (
+        <AddPost />
       ) : isDropDown === "add-branch" ? (
         <AddBranch />
       ) : null}

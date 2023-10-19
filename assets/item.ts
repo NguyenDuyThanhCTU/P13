@@ -253,25 +253,28 @@ export const HeaderItems = [
     link: "",
   },
   {
-    name: "Giới thiệu",
-    link: "gioi-thieu",
+    name: "Danh mục sản phẩm",
+    link: "danh-muc-san-pham",
   },
   {
     name: "Sản phẩm",
-    link: "san-pham/tat-ca-san-pham?pageNumber=1",
-  },
-
-  {
-    name: "Quy trình sản xuất",
-    link: "quy-trinh-san-xuat",
+    link: "san-pham",
   },
   {
-    name: "Hợp tác",
-    link: "hop-tac",
+    name: "Dịch vụ",
+    link: "dich-vu",
   },
   {
-    name: "Tin tức & Sự kiện",
-    link: "tin-tuc-su-kien",
+    name: "Công trình thực tế",
+    link: "cong-trinh-thuc-te",
+  },
+  {
+    name: "Giới thiệu",
+    link: "bai-viet/gioi-thieu",
+  },
+  {
+    name: "Hỗ trợ",
+    link: "ho-tro",
   },
   {
     name: "Liên hệ",
@@ -310,20 +313,44 @@ export const ToolsTipsSocialMediaItems = [
 
 export const TypePostItems = [
   {
-    label: "Tin tức & Sự kiện",
-    value: "news",
+    label: "Giới thiệu",
+    value: "gioi-thieu",
   },
   {
-    label: "Hợp tác",
-    value: "cooperate",
+    label: "Hướng dẫn sử dụng",
+    value: "huong-dan-su-dung",
   },
   {
-    label: "Quy trình sản xuất",
-    value: "process",
+    label: "Catalogue Sản phẩm",
+    value: "catalogue-san-pham",
   },
   {
-    label: "Chính sách",
-    value: "policy",
+    label: "Chính sách đổi trả",
+    value: "chinh-sach-doi-tra",
+  },
+  {
+    label: "Điều khoản sử dụng",
+    value: "dieu-khoan-su-dung",
+  },
+  {
+    label: "Chính sách và quy định chung",
+    value: "chinh-sach-va-quy-dinh-chung",
+  },
+  {
+    label: "Chính sách bảo hành",
+    value: "chinh-sach-bao-hanh",
+  },
+  {
+    label: "Chính sách bảo mật",
+    value: "chinh-sach-bao-mat",
+  },
+  {
+    label: "Chính sách giao hàng",
+    value: "chinh-sach-giao-hang",
+  },
+  {
+    label: "Phương thức thanh toán",
+    value: "phuong-thuc-thanh-toan",
   },
 ];
 
@@ -354,56 +381,34 @@ export const TypeProductItems = [
   },
 ];
 
-export const PolicyItems = [
+export const PolicyTopics = [
   {
-    title: "QUI ĐỊNH HÌNH THỨC THANH TOÁN",
-    content: "Nội dung bài viết 1",
-    url: "qui-dinh-hinh-thuc-thanh-toan",
-    type: "policy",
-    image: "",
+    label: "Chính sách đổi trả",
+    value: "chinh-sach-doi-tra",
   },
   {
-    title: "CHÍNH SÁCH BẢO HÀNH",
-    content: "Nội dung bài viết ",
-    url: "chinh-sach-bao-hanh",
-    type: "policy",
-    image: "",
+    label: "Điều khoản sử dụng",
+    value: "dieu-khoan-su-dung",
   },
   {
-    title: "CHÍNH SÁCH BẢO VỆ THÔNG TIN CÁ NHÂN",
-    content: "Nội dung bài viết ",
-    url: "chinh-sach-bao-ve-thong-tin-ca-nhan",
-    type: "policy",
-    image: "",
+    label: "Chính sách và quy định chung",
+    value: "chinh-sach-va-quy-dinh-chung",
   },
   {
-    title: "CHÍNH SÁCH ĐỔI TRẢ HÀNG",
-    content: "Nội dung bài viết ",
-    url: "chinh-sach-doi-tra-hang",
-    type: "policy",
-    image: "",
+    label: "Chính sách bảo hành",
+    value: "chinh-sach-bao-hanh",
   },
   {
-    title: "CHÍNH SÁCH VẬN CHUYỂN",
-    content: "Nội dung bài viết ",
-    url: "chinh-sach-van-chuyen",
-    type: "policy",
-    image: "",
+    label: "Chính sách bảo mật",
+    value: "chinh-sach-bao-mat",
   },
   {
-    title: "",
-    content: "Nội dung bài viết ",
-    url: "",
-    type: "",
-    image: "",
+    label: "Chính sách giao hàng",
+    value: "chinh-sach-giao-hang",
   },
   {
-    title:
-      'YẾN SÀO TRÍ SƠN NHẬN GIẢI "SẢN PHẨM CÔNG NGHIỆP NÔNG THÔN TIÊU BIỂU CẤP TỈNH" NĂM 2023',
-    content: "Nội dung bài viết ",
-    url: "",
-    type: "news",
-    image: "",
+    label: "Phương thức thanh toán",
+    value: "phuong-thuc-thanh-toan",
   },
 ];
 
