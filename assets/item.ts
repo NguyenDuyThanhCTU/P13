@@ -313,6 +313,10 @@ export const ToolsTipsSocialMediaItems = [
 
 export const TypePostItems = [
   {
+    label: "Công trình thực tế",
+    value: "cong-trinh-thuc-te",
+  },
+  {
     label: "Giới thiệu",
     value: "gioi-thieu",
   },

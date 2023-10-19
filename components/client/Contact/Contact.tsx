@@ -6,9 +6,11 @@ const Contact = () => {
   const { ContactData } = useData();
   return (
     <div>
-      <div className="w-[1600px] mx-auto grid grid-cols-2 font-LexendDeca font-extralight">
-        <div className="h-screen">
-          <iframe src={ContactData.location}></iframe>
+      <div className="w-[1600px] mx-auto grid grid-cols-2 gap-5 font-LexendDeca font-extralight">
+        <div className="h-screen w-full border-r">
+          <iframe src={ContactData.location} className="h-full w-[80%]">
+            {" "}
+          </iframe>
         </div>
         <div className="">
           <div className="flex flex-col gap-5">

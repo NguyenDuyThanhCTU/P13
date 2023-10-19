@@ -11,7 +11,7 @@ const Footer = () => {
   const { ContactData } = useData();
   return (
     <>
-      <div className="grid gap-4 grid-cols-6 w-[1300px] mx-auto font-LexendDeca font-extralight">
+      <div className="grid gap-4 grid-cols-6 w-[1300px] mx-auto font-LexendDeca font-extralight py-10">
         <div className="col-span-2">
           <h2 className="text-[18px] font-normal">
             Homeprosec - Nhà Công Nghệ
