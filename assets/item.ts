@@ -254,11 +254,11 @@ export const HeaderItems = [
   },
   {
     name: "Danh mục sản phẩm",
-    link: "danh-muc-san-pham",
+    link: "san-pham/khoa-cua-van-tay",
   },
   {
     name: "Sản phẩm",
-    link: "san-pham",
+    link: "san-pham/tat-ca",
   },
   {
     name: "Dịch vụ",
@@ -274,7 +274,7 @@ export const HeaderItems = [
   },
   {
     name: "Hỗ trợ",
-    link: "ho-tro",
+    link: "bai-viet/ho-tro",
   },
   {
     name: "Liên hệ",

@@ -8,14 +8,14 @@ const TopFooter = () => {
   const { ContactData } = useData();
   return (
     <div className="bg-gray-200 font-LexendDeca text-gray-600">
-      <div className="w-[1300px] mx-auto flex gap-5 py-8">
+      <div className="p:w-auto d:w-[1300px] p:mx-2 d:mx-auto flex d:flex-row p:flex-col items-center gap-5 py-8">
         <div className="flex  items-center gap-5  ">
           <MdMarkEmailRead />
           <p className=" w-max pr-8 border-r border-gray-400">
             Đăng kí nhận tin
           </p>
         </div>
-        <div className="flex w-[40vw]">
+        <div className="flex p:w-auto d:w-[40vw]">
           <div className="w-full">
             <div className="bg-white flex w-full justify-between">
               <input

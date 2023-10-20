@@ -11,7 +11,7 @@ const ProductPage = () => {
           className="w-full h-full object-cover object-top"
         />
       </div>
-      <div className="w-[1460px] mx-auto">
+      <div className="p:w-auto p:mx-2 d:w-[1460px] d:mx-auto">
         <DisplayProduct />
       </div>
     </>

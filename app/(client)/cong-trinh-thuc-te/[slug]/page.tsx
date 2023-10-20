@@ -9,6 +9,7 @@ const NewsDetailPage = async ({ params }: { params: { slug: string } }) => {
   const Data = await getDataByTypeProps("posts", "topicurl", params.slug);
 
   const markup = { __html: Data[0]?.content };
+
   const DetailPostDate = moment
     .unix(Data[0]?.createdAt.seconds)
     .format("MMMM DD, YYYY");
@@ -41,10 +42,12 @@ const NewsDetailPage = async ({ params }: { params: { slug: string } }) => {
             </div>
           </div>
         </div>
-        <div
-          className="font-LexendDeca font-extralight "
-          dangerouslySetInnerHTML={markup}
-        ></div>
+        {markup && (
+          <div
+            className="font-LexendDeca font-extralight "
+            dangerouslySetInnerHTML={markup}
+          ></div>
+        )}
       </div>
       <div className="border h-max border-gray-400 p:col-auto d:col-span-2 d:hidden p:block">
         <div className="p-3 ">

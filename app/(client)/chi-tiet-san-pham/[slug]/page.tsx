@@ -1,7 +1,12 @@
+import ProductDetail from "@components/client/Product/ProductDetail";
 import React from "react";
 
 const ProductDetailPage = () => {
-  return <div>ProductDetailPage</div>;
+  return (
+    <>
+      <ProductDetail />
+    </>
+  );
 };
 
 export default ProductDetailPage;

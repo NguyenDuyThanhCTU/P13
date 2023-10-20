@@ -6,7 +6,7 @@ import React from "react";
 
 const NewsPage = async () => {
   const Data = await getDataByTypeProps("posts", "url", "cong-trinh-thuc-te");
-
+  console.log(Data);
   return (
     <>
       <div className="border h-max border-gray-400 d:block p:hidden col-span-2">
