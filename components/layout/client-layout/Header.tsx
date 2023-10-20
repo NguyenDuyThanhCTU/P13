@@ -88,9 +88,11 @@ const Header = () => {
                         );
 
                         return (
-                          <div className=" group/lv1 relative  border-b">
+                          <div
+                            key={idx}
+                            className=" group/lv1 relative  border-b"
+                          >
                             <Link
-                              key={idx}
                               href={`/bai-viet/${items.value}`}
                               className="  border-b"
                             >
@@ -108,8 +110,8 @@ const Header = () => {
                             {sort.length > 0 && (
                               <div className="hidden group-hover/lv1:block absolute top-0 left-full mt-0 w-max bg-mainred  shadow-lg">
                                 <div className="">
-                                  {sort.map((items: any) => (
-                                    <>
+                                  {sort.map((items: any, idx: number) => (
+                                    <div key={idx}>
                                       <div className=" group/lv2    relative font-light     border-b">
                                         <Link
                                           href={`${`/san-pham/${items.typeUrl}`}`}
@@ -119,7 +121,7 @@ const Header = () => {
                                           </div>
                                         </Link>
                                       </div>
-                                    </>
+                                    </div>
                                   ))}
                                 </div>
                               </div>
