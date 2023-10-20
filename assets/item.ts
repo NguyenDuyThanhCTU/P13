@@ -313,6 +313,10 @@ export const ToolsTipsSocialMediaItems = [
 
 export const TypePostItems = [
   {
+    label: "Dịch vụ",
+    value: "dich-vu",
+  },
+  {
     label: "Công trình thực tế",
     value: "cong-trinh-thuc-te",
   },
@@ -360,28 +364,100 @@ export const TypePostItems = [
 
 export const TypeProductItems = [
   {
-    label: "Teraco",
-    value: "teraco",
+    label: "Motor cổng tự động",
+    value: "motor-cong-tu-dong",
   },
   {
-    label: "SRM",
-    value: "srm",
+    label: "Thiết bị nhà thông minh",
+    value: "thiet-bi-nha-thong-minh",
+  },
+
+  {
+    label: "Bộ khóa cổng inox",
+    value: "bo-khoa-cong-inox",
   },
   {
-    label: "Dothanh",
-    value: "dothanh",
+    label: "Bộ khóa vân tay Hàn Quốc",
+    value: "bo-khoa-van-tay-han-quoc",
   },
   {
-    label: "Tata",
-    value: "tata",
+    label: "Bộ khóa cổng",
+    value: "bo-khoa-cong",
   },
   {
-    label: "Kenbo",
-    value: "kenbo",
+    label: "Bộ từ hút - chốt thả",
+    value: "bo-tu-hut-chot-tha",
   },
   {
-    label: "TMT",
-    value: "tmt",
+    label: "Khóa cửa vân tay",
+    value: "khóa-cua-van-tay",
+  },
+  {
+    label: "Khóa Khách Sạn (Chung Cư) / Khóa Tủ",
+    value: "khoa-khach-san-chung-cu-khoa-tu",
+  },
+  {
+    label: "Kiểm soát cửa - Thiết bị Access Control",
+    value: "kiem-soat-cua-thiet-bi-access-control",
+  },
+  {
+    label: "Cửa tự động - Motor tự động",
+    value: "cua-tu-dong-motor-tu-dong",
+  },
+  {
+    label: "Hệ thống khác",
+    value: "he-thong-khac",
+  },
+];
+
+export const ProductFunctionType = [
+  {
+    label: "Bộ Khóa Pro (UPS/ Vân tay/ Thẻ/ Số/ Remote/Chìa Cơ)",
+  },
+  {
+    label: "Bộ Khóa Pro , Vân tay , Có sẵn bộ tích điện",
+  },
+  {
+    label: "Bộ Khóa Plus ( Vân tay/ Thẻ/ Số/ Remote/Chìa Cơ)",
+  },
+  {
+    label: "Bộ Khóa Basic, Thẻ từ, Mã Số, Remote, Chìa Cơ",
+  },
+  {
+    label: "Bộ Khóa Basic ( Thẻ/ Số/ Remote/Chìa Cơ)",
+  },
+  {
+    label: "Korea",
+  },
+  {
+    label: "Full",
+  },
+  {
+    label: "Bộ Khóa Plus , Vân tay, Thẻ Từ, Mã Số, Remote, Chìa Cơ",
+  },
+  {
+    label: "Bộ Khóa Plus, Vân tay, Nguồn thường",
+  },
+  {
+    label: "HomeProSec",
+  },
+];
+
+export const ProductPriceItems = [
+  {
+    label: "Dưới 950.000đ",
+  },
+  {
+    label: "1,000,000₫ - 1,950,000₫",
+  },
+  {
+    label: "2,000,000₫ - 4,950,000₫",
+  },
+  {
+    label: "5,000,000₫ - 9,900,000₫",
+  },
+  {
+    label: "Trên 10,000,000₫",
   },
 ];
 

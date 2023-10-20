@@ -18,7 +18,7 @@ const ListProducts: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { setDropDown } = useStateProvider();
   const { Products } = useData();
-
+  console.log(Products);
   return (
     <div className="rounded-xl">
       <div className="p-4 flex gap-5 border flex-col">

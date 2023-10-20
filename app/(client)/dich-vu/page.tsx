@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const NewsPage = async () => {
-  const Data = await getDataByTypeProps("posts", "url", "cong-trinh-thuc-te");
+  const Data = await getDataByTypeProps("posts", "url", "dich-vu");
 
   return (
     <>
@@ -19,7 +19,7 @@ const NewsPage = async () => {
       </div>
       <div className="p:col-auto d:col-span-5">
         <div className="font-LexendDeca font-extralight ">
-          <h1 className="text-[28px] font-semibold">Dự án thực tế</h1>
+          <h1 className="text-[28px] font-semibold">Nhà Trọ</h1>
           <div className="flex flex-col gap-8">
             {Data.map((item: any, idx: number) => {
               const DetailPostDate = moment

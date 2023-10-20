@@ -1,14 +1,17 @@
 "use client";
-import { HeaderItems } from "@assets/item";
+import { HeaderItems, TypeProductItems } from "@assets/item";
+import { useData } from "@context/DataProviders";
 import Link from "next/link";
 import React from "react";
 import {
+  AiFillCaretRight,
   AiOutlineDown,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 
 const Header = () => {
+  const { productTypes } = useData();
   const SupportItems = [
     {
       label: "Hướng dẫn sử dụng",
@@ -40,21 +43,22 @@ const Header = () => {
         </div>
         <div className="flex  gap-8 w-full justify-center font-LexendDeca font-extralight">
           {HeaderItems.map((item: any, idx: number) => (
-            <div className="relative group" key={idx}>
+            <div className="relative group/main " key={idx}>
               <Link
-                className="hover:text-blue-400 duration-300 flex items-center gap-2"
+                className="hover:text-blue-400 duration-300 flex items-center gap-2 font-light"
                 href={`/${item.link}`}
               >
                 <p> {item.name}</p>
-                {item.name === "Hỗ trợ" && (
-                  <AiOutlineDown className="text-[10px] group-hover:rotate-180 duration-300" />
+                {(item.name === "Hỗ trợ" ||
+                  item.name === "Danh mục sản phẩm") && (
+                  <AiOutlineDown className="text-[10px] group-hover/main:rotate-180 duration-300" />
                 )}
               </Link>
-              <div className="h-[2px] bg-gray-400 w-0 group-hover:w-full duration-300 mt-3 "></div>
+              <div className="h-[2px] bg-gray-400 w-0 group-hover/main:w-full duration-300 mt-3 "></div>
               {item.name === "Hỗ trợ" && (
                 <div className="flex flex-col top-5 absolute">
                   <div className="bg-none w-full h-4"></div>
-                  <div className=" top-9 hidden group-hover:block duration-300">
+                  <div className=" top-9 hidden group-hover/main:block duration-300">
                     <div className=" flex flex-col bg-white shadow-md border-t-2 border-gray-500 ">
                       {SupportItems.map((items: any, idx: number) => (
                         <Link
@@ -62,12 +66,67 @@ const Header = () => {
                           href={`/bai-viet/${items.value}`}
                           className="w-max  border-b"
                         >
-                          <p className="py-2 px-2 hover:text-blue-400 duration-300">
+                          <p className="py-2 px-2 hover:text-blue-400 duration-300 ">
                             {" "}
                             {items.label}
                           </p>
                         </Link>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {item.name === "Danh mục sản phẩm" && (
+                <div className="flex flex-col top-5 absolute">
+                  <div className="bg-none w-full h-4"></div>
+                  <div className=" top-9 hidden group-hover/main:block duration-300">
+                    <div className=" flex flex-col bg-white shadow-md border-t-2 border-gray-500 ">
+                      {TypeProductItems.map((items: any, idx: number) => {
+                        const sort = productTypes.filter(
+                          (item: any) => item.parentUrl === items.value
+                        );
+
+                        return (
+                          <div className=" group/lv1 relative  border-b">
+                            <Link
+                              key={idx}
+                              href={`/bai-viet/${items.value}`}
+                              className="  border-b"
+                            >
+                              <div className="py-2 px-4 hover:text-blue-400 duration-300  font-light flex items-center justify-between w-full">
+                                {" "}
+                                <p className="w-max"> {items.label}</p>
+                                {sort.length > 0 && (
+                                  <AiFillCaretRight
+                                    className={` rotate-90 group-hover/lv1:rotate-0 duration-500 `}
+                                  />
+                                )}
+                              </div>
+                            </Link>
+
+                            {sort.length > 0 && (
+                              <div className="hidden group-hover/lv1:block absolute top-0 left-full mt-0 w-max bg-mainred  shadow-lg">
+                                <div className="">
+                                  {sort.map((items: any) => (
+                                    <>
+                                      <div className=" group/lv2    relative font-light     border-b">
+                                        <Link
+                                          href={`${`/san-pham/${items.typeUrl}`}`}
+                                        >
+                                          <div className="py-2 px-4 hover:text-blue-400 duration-300  bg-white font-light flex items-center justify-between w-full">
+                                            <p>{items.type}</p>
+                                          </div>
+                                        </Link>
+                                      </div>
+                                    </>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

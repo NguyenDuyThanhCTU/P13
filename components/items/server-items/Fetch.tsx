@@ -79,6 +79,9 @@ const Fetch: React.FC = () => {
     getProducts("posts").then((data: any) => {
       setPosts(data);
     });
+    getProducts("products").then((data: any) => {
+      setProducts(data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
