@@ -12,8 +12,8 @@ type ClientLayoutProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Vé Tàu Cao Tốc Rạch Giá",
-  description: "Vé Tàu Cao Tốc Rạch Giá",
+  title: "Khóa cửa tự động",
+  description: "Khóa cửa tự động",
 };
 
 const layout: React.FC<ClientLayoutProps> = ({ children }) => {

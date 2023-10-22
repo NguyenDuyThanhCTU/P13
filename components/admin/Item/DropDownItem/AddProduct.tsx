@@ -120,7 +120,7 @@ const AddProduct = ({}) => {
           delete data[key];
         }
       }
-      console.log(data);
+
       addDocument("products", data).then(() => {
         notification["success"]({
           message: "Tải lên thành công!",
