@@ -140,22 +140,11 @@ const Cart = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const data = {
-  //     name: "",
-  //     color: [],
-  //   };
-  //   cartProducts.map((items, idx) => {
-  //     data.color.push(items.ListColor);
-  //     data.name = items.title;
-  //   });
-
-  // }, []);
   const currentTime = new Date();
   const formatCurrentTime = moment(currentTime).format("YYYY-MM-DD");
 
   return (
-    <div className="grid d:grid-cols-2 gap-5 p:grid-cols-1 mt-5 mx-10 font-LexendDeca py-14">
+    <div className="grid d:grid-cols-2 gap-5 p:grid-cols-1 mt-5 p:mx-2 d:mx-10 font-LexendDeca py-14">
       <div className="border shadow-xl">
         <div className="p-2">
           <h3 className=" uppercase text-[24px] font-normail border-b w-full pb-2">
@@ -267,7 +256,7 @@ const Cart = () => {
               setValue={setEmail}
               Input={true}
             />
-            <div className=" flex gap-2">
+            <div className=" flex gap-2 d:flex-row p:flex-col">
               <Input
                 text="Tỉnh/Thành phố "
                 Value={city}

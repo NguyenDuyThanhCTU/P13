@@ -1,8 +1,11 @@
 "use client";
 import { useData } from "@context/DataProviders";
 import Link from "next/link";
+import { AiOutlineMail } from "react-icons/ai";
 import { BiPhoneCall } from "react-icons/bi";
+import { BsMessenger } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import { IoLocationSharp } from "react-icons/io5";
 import { SiZalo } from "react-icons/si";
 
 function Hotline() {
@@ -10,21 +13,29 @@ function Hotline() {
 
   return (
     <div className="fixed bottom-7 right-10  box-border flex flex-col gap-5">
-      <div className="p:flex items-center d:hidden">
-        <a
-          href={`https://${SocialMedia[1]}`}
-          className="h-14 w-14 p-2 bg-blue-500 border-white border flex items-center rounded-full justify-center"
+      <div className=" items-center ">
+        <Link
+          href={`https://${SocialMedia[0]}`}
+          className="h-14 w-14 p-2 bg-blue-500  flex items-center rounded-full justify-center"
         >
-          <FaFacebookF className="text-white text-[40px]" />
-        </a>
+          <SiZalo className="text-white text-[40px]" />
+        </Link>
       </div>
       <div className="flex items-center ">
-        <a
-          href={`https://${SocialMedia[0]}`}
-          className="h-14 w-14 bg-white border border-blue-500 text-blue-500 flex items-center rounded-full justify-center"
+        <Link
+          href={`https://m.me/alphasmart368`}
+          className="h-14 w-14 bg-blue-400 border  text-white flex items-center rounded-full justify-center"
         >
-          <SiZalo className=" w-full h-full p-3" />
-        </a>
+          <BsMessenger className=" w-full h-full p-3" />
+        </Link>
+      </div>
+      <div className="p:hidden d:flex items-center ">
+        <Link
+          href={`${ContactData.location}`}
+          className="h-14 w-14 bg-orange-500 border  text-white flex items-center rounded-full justify-center"
+        >
+          <IoLocationSharp className=" w-full h-full p-3" />
+        </Link>
       </div>
       <Link href={`tel:${ContactData.phone}`}>
         <div className="flex items-center">

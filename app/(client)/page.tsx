@@ -9,7 +9,7 @@ const HomePage = () => {
     <div>
       <Slide />
       <HomeDisplay topic={"Sản phẩm mới"} />
-      <Introduction />
+      {/* <Introduction /> */}
       <HomeDisplay topic={"Sản phẩm bán chạy "} />
       {/* <About /> */}
     </div>

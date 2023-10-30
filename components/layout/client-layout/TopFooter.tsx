@@ -8,8 +8,8 @@ const TopFooter = () => {
   const { ContactData } = useData();
   return (
     <div className="bg-gray-200 font-LexendDeca text-gray-600">
-      <div className="p:w-auto d:w-[1300px] p:mx-2 d:mx-auto flex d:flex-row p:flex-col items-center gap-5 py-8">
-        <div className="flex  items-center gap-5  ">
+      <div className="p:w-auto d:w-[1300px] p:mx-2 d:mx-auto flex d:flex-row p:flex-col items-center justify-center  gap-5 py-8">
+        {/* <div className="flex  items-center gap-5  ">
           <MdMarkEmailRead />
           <p className=" w-max pr-8 border-r border-gray-400">
             Đăng kí nhận tin
@@ -28,8 +28,8 @@ const TopFooter = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex items-center gap-3 ">
+        </div> */}
+        <div className="flex items-center gap-3  w-max">
           <div className="bg-black text-white rounded-full text-[23px] p-1">
             <BiPhone />
           </div>

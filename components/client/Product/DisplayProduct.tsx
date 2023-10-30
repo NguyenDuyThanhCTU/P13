@@ -1,78 +1,75 @@
 "use client";
 import { ProductFunctionType, ProductPriceItems } from "@assets/item";
 import { useData } from "@context/DataProviders";
-import { Checkbox } from "antd";
+import { Checkbox, Radio } from "antd";
 import React, { useEffect } from "react";
 import ProductCard from "./ProductCard";
-import { useParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import ShopCart from "@components/items/client-items/ShopCart";
+import { useStateProvider } from "@context/StateProvider";
 
 const DisplayProduct = () => {
   const [ProductFunction, setProductFunction] = React.useState<any>("");
   const [ProductPrice, setProductPrice] = React.useState<any>("");
-  const [ProductSort, setProductSort] = React.useState<any>([]);
-  const { Products } = useData();
   const params = useParams();
 
-  useEffect(() => {
-    if (params.slug === "tat-ca") {
-      setProductSort(Products);
+  const router = useRouter();
+  const { OpenCart } = useStateProvider();
+
+  const HandleSort = (value: any, topic: string) => {
+    if (topic === "function") {
+      setProductFunction(value);
+      router.push(`/san-pham/${params.slug}?func=${ProductFunction}`);
     } else {
-      const sort = Products?.filter(
-        (item: any) => item.parentUrl === params.slug
-      );
-      if (sort) {
-        setProductSort(sort);
-      }
+      setProductPrice(value);
+      router.push(`/san-pham/${params.slug}?price=${ProductPrice}`);
     }
-  }, [Products, params, ProductFunction, ProductPrice]);
+  };
 
   return (
-    <div className="py-5 flex gap-5 d:flex-row p:flex-col">
+    <>
       <div className="flex flex-col gap-10 font-LexendDeca">
         <div>
           <h2 className="text-[20px] font-normal uppercase">Chức năng</h2>
-          <div className="flex flex-col mt-3 font-normal text-gray-400 gap-1">
+
+          <Radio.Group
+            onChange={(e) => HandleSort(e.target.value, "function")}
+            value={ProductFunction}
+            className="flex flex-col mt-3 font-normal text-gray-400 gap-1"
+          >
             {ProductFunctionType.map((item: any, idx) => (
-              <Checkbox
-                key={idx}
-                onChange={(e) => setProductFunction(e.target.value)}
-                value={item.label}
-              >
+              <Radio key={idx} value={item.value}>
                 {item.label}
-              </Checkbox>
+              </Radio>
             ))}
-          </div>
+          </Radio.Group>
         </div>
+
         <div>
           <h2 className="text-[20px] font-normal">GIÁ SẢN PHẨM</h2>
-          <div className="flex flex-col mt-3 font-normal text-gray-400 gap-1">
+
+          <Radio.Group
+            onChange={(e) => HandleSort(e.target.value, "price")}
+            value={ProductPrice}
+            className="flex flex-col mt-3 font-normal text-gray-400 gap-1"
+          >
             {ProductPriceItems.map((item: any, idx) => (
-              <Checkbox
-                key={idx}
-                onChange={(e) => setProductPrice(e.target.value)}
-                value={item.label}
-              >
+              <Radio key={idx} value={item.value}>
                 {item.label}
-              </Checkbox>
+              </Radio>
             ))}
-          </div>
+          </Radio.Group>
         </div>
       </div>
-      <div>
-        <h1 className="text-[28px] font-semibold font-LexendDeca pb-5">
-          {params.slug === "tat-ca"
-            ? "Tất cả sản phẩm"
-            : ProductSort[0]?.parent}
-        </h1>
-        <div className="grid p:grid-cols-2 d:grid-cols-4 gap-2">
-          {ProductSort.map((item: any, idx: number) => (
-            <div key={idx}>
-              <ProductCard Data={item} />
-            </div>
-          ))}
-        </div>
+
+      <div
+        className={`fixed bottom-36 right-[-300px] ${
+          OpenCart ? " z-50" : "z-0"
+        }`}
+      >
+        <ShopCart />
       </div>
-    </div>
+    </>
   );
 };
 

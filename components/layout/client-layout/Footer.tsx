@@ -13,13 +13,11 @@ const Footer = () => {
     <>
       <div className="grid gap-4 p:grid-cols-2 d:grid-cols-6 p:w-auto d:w-[1300px] p:mx-2 d:mx-auto font-LexendDeca font-extralight py-10">
         <div className="col-span-2">
-          <h2 className="text-[18px] font-normal">
-            Homeprosec - Nhà Công Nghệ
-          </h2>
+          <h2 className="text-[18px] font-normal">ALPHA SMART</h2>
           <div className="mt-4 flex flex-col text-[14px]">
             <p>
-              Homeprosec - Nhà Công Nghệ Chuyên các loại khóa cửa điện tử, khóa
-              cổng vân tay, chuông cửa màn hình.
+              ALPHA SMART - Chuyên kinh doanh phân phối cổng tự động, khóa vân
+              tay, thiết bị nhà thông minh.
             </p>
             <div>
               <img
@@ -67,10 +65,9 @@ const Footer = () => {
           <h2 className="text-[18px] font-normal">Fanpage</h2>
           <div className="h-52 overflow-hidden mt-4">
             <iframe
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdichvuquangcaotrongoicantho%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAlphaSmart368%3Fmibextid%3DZbWKwL&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
               width="340"
               height="500"
-              scrolling="no"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             ></iframe>
           </div>

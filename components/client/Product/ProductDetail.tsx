@@ -19,11 +19,13 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import ShopCart from "@components/items/client-items/ShopCart";
 import { BsFillCartPlusFill } from "react-icons/bs";
+import Contact from "./Contact";
 
 const ProductDetail = () => {
   const [similarProduct, setSimilarProduct] = useState([]);
   const [ProductFetch, setProductFetch] = useState<any>();
   const [isCombo, setIsCombo] = useState(1);
+  const [openContact, setOpenContact] = useState<any>(false);
   const { setCartItems, Sale } = useData();
   const { setOpenCart, OpenCart } = useStateProvider();
   const router = useRouter();
@@ -215,23 +217,40 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-
-            <div className="grid grid-cols-4 gap-5 ">
-              <div
-                className="rounded-sm col-span-3 w-full text-[18px] text-primary bg-[#f0edf8] hover:bg-[#e1dbf0] flex items-center  py-2 justify-center cursor-pointer gap-1"
-                onClick={() => HandleOrder(ProductFetch?.id, "add")}
-              >
-                <BsFillCartPlusFill className="text-[23px] " />
-                <p>Thêm vào giỏ</p>
+            {ProductFetch?.parentUrl === "motor-cong-tu-dong" ? (
+              <div className="flex">
+                {" "}
+                <div
+                  className="py-3 px-6 bg-mainblue text-white hover:bg-red-700 rounded-sm cursor-pointer duration-300"
+                  onClick={() => {
+                    setOpenContact(true);
+                  }}
+                >
+                  Liên hệ
+                </div>
               </div>
+            ) : (
+              <>
+                {" "}
+                <div className="grid grid-cols-4 gap-5 ">
+                  <div
+                    className="rounded-sm col-span-3 w-full text-[18px] text-primary bg-[#f0edf8] hover:bg-[#e1dbf0] flex items-center  py-2 justify-center cursor-pointer gap-1"
+                    onClick={() => HandleOrder(ProductFetch?.id, "add")}
+                  >
+                    <BsFillCartPlusFill className="text-[23px] " />
+                    <p>Thêm vào giỏ</p>
+                  </div>
 
-              <div
-                className="col-span-1 p-3 w-max bg-orange-500 text-white hover:bg-orange-600 rounded-sm cursor-pointer duration-300"
-                onClick={() => HandleOrder(ProductFetch?.id, "buy")}
-              >
-                Mua ngay
-              </div>
-            </div>
+                  <div
+                    className="col-span-1 p-3 w-max bg-orange-500 text-white hover:bg-orange-600 rounded-sm cursor-pointer duration-300"
+                    onClick={() => HandleOrder(ProductFetch?.id, "buy")}
+                  >
+                    Mua ngay
+                  </div>
+                </div>
+              </>
+            )}
+
             <div className="py-4 border-t border-b w-full font-light">
               <h3>Mô tả</h3>
               <div
@@ -290,6 +309,11 @@ const ProductDetail = () => {
       >
         <ShopCart />
       </div>
+      <>
+        {openContact && (
+          <Contact setOpenContact={setOpenContact} OpenContact={openContact} />
+        )}
+      </>
     </div>
   );
 };

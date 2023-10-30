@@ -6,8 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import Link from "next/link";
+import { useData } from "@context/DataProviders";
 
 const Slide = () => {
+  const { Slides } = useData();
   const slide1Items = [
     {
       image:
@@ -64,10 +66,16 @@ const Slide = () => {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        {slide1Items.map((item: any, idx: number) => (
+        {Slides.map((item: any, idx: number) => (
           <Link href={`/san-pham/tat-ca`} key={idx}>
             <SwiperSlide>
-              <img src={item.image} alt="slide" />
+              <div className="w-full flex justify-center">
+                <img
+                  src={item.image}
+                  alt="slide"
+                  className="p:h-auto d:h-[70vh] object-contain"
+                />
+              </div>
             </SwiperSlide>
           </Link>
         ))}

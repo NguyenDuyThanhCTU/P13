@@ -270,7 +270,7 @@ export const HeaderItems = [
   },
   {
     name: "Giới thiệu",
-    link: "bai-viet/gioi-thieu",
+    link: "gioi-thieu",
   },
   {
     name: "Hỗ trợ",
@@ -320,10 +320,7 @@ export const TypePostItems = [
     label: "Công trình thực tế",
     value: "cong-trinh-thuc-te",
   },
-  {
-    label: "Giới thiệu",
-    value: "gioi-thieu",
-  },
+
   {
     label: "Hướng dẫn sử dụng",
     value: "huong-dan-su-dung",
@@ -390,11 +387,11 @@ export const TypeProductItems = [
   },
   {
     label: "Khóa cửa vân tay",
-    value: "khóa-cua-van-tay",
+    value: "khoa-cua-van-tay",
   },
   {
     label: "Khóa Khách Sạn (Chung Cư) / Khóa Tủ",
-    value: "khoa-khach-san-chung-cu-khoa-tu",
+    value: "khóa-khach-san-chung-cu-khoa-tu",
   },
   {
     label: "Kiểm soát cửa - Thiết bị Access Control",
@@ -413,51 +410,62 @@ export const TypeProductItems = [
 export const ProductFunctionType = [
   {
     label: "Bộ Khóa Pro (UPS/ Vân tay/ Thẻ/ Số/ Remote/Chìa Cơ)",
+    value: "bo-khoa-pro-ups-van-tay-the-so-remote-chia-co",
   },
   {
     label: "Bộ Khóa Pro , Vân tay , Có sẵn bộ tích điện",
+    value: "bo-khoa-pro-van-tay-co-san-bo-tich-dien",
   },
   {
     label: "Bộ Khóa Plus ( Vân tay/ Thẻ/ Số/ Remote/Chìa Cơ)",
+    value: "bo-khoa-plus-van-tay-the-so-remote-chia-co",
   },
   {
     label: "Bộ Khóa Basic, Thẻ từ, Mã Số, Remote, Chìa Cơ",
+    value: "bo-khoa-basic-the-tu-ma-so-remote-chia-co",
   },
   {
     label: "Bộ Khóa Basic ( Thẻ/ Số/ Remote/Chìa Cơ)",
+    value: "bo-khoa-basic-the-so-remote-chia-co",
   },
   {
     label: "Korea",
+    value: "korea",
   },
   {
     label: "Full",
+    value: "full",
   },
   {
     label: "Bộ Khóa Plus , Vân tay, Thẻ Từ, Mã Số, Remote, Chìa Cơ",
+    value: "bo-khoa-plus-van-tay-the-tu-ma-so-remote-chia-co",
   },
   {
     label: "Bộ Khóa Plus, Vân tay, Nguồn thường",
-  },
-  {
-    label: "HomeProSec",
+    value: "bo-khoa-plus-van-tay-nguon-thuong",
   },
 ];
 
 export const ProductPriceItems = [
   {
     label: "Dưới 950.000đ",
+    value: "duoi-950000d",
   },
   {
     label: "1,000,000₫ - 1,950,000₫",
+    value: "1000000d-1950000d",
   },
   {
     label: "2,000,000₫ - 4,950,000₫",
+    value: "2000000d-4950000d",
   },
   {
     label: "5,000,000₫ - 9,900,000₫",
+    value: "5000-000d-9900000d",
   },
   {
     label: "Trên 10,000,000₫",
+    value: "tren-10000000d",
   },
 ];
 

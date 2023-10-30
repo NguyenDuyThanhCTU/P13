@@ -1,20 +1,27 @@
 "use client";
 import { HeaderItems, TypeProductItems } from "@assets/item";
 import { useData } from "@context/DataProviders";
+import { useStateProvider } from "@context/StateProvider";
 import { Drawer } from "antd";
 import Link from "next/link";
 import React from "react";
 import {
   AiFillCaretRight,
   AiOutlineDown,
+  AiOutlineMail,
+  AiOutlineRight,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { FaListUl } from "react-icons/fa";
+import { TbPhoneCall } from "react-icons/tb";
 
 const Header = () => {
-  const { productTypes } = useData();
+  const { productTypes, TradeMarkData, ContactData, CartItems } = useData();
+  const { setOpenCart, OpenCart } = useStateProvider();
+
   const [open, setOpen] = React.useState(false);
+  const [show, setShow] = React.useState(false);
   const SupportItems = [
     {
       label: "Hướng dẫn sử dụng",
@@ -27,21 +34,32 @@ const Header = () => {
   ];
   return (
     <div className="shadow-xl">
-      <div className="bg-blue-400 py-1 h-[30px] w-full text-white text-[14px] flex justify-center items-center">
+      {/* <div className="bg-blue-400 py-1 h-[30px] w-full text-white text-[14px] flex justify-center items-center">
         Miễn phí vận chuyển với đơn hàng trên 1.000.000
-      </div>
+      </div> */}
       <div className="w-[1300px] mx-auto d:block p:hidden">
         <div className=" w-full py-5   flex justify-between items-center ">
           <div></div>
           <div className="">
             <img
-              src="https://file.hstatic.net/200000235187/file/logohome_b583c2c7d30b40f68d0d0450c6d7243d.jpg"
+              src={TradeMarkData.websiteLogo}
               alt="logo"
+              className="h-[70px]"
             />
           </div>
           <div className="text-[30px] flex gap-2">
             <AiOutlineSearch />
-            <AiOutlineShoppingCart />
+            <div
+              className="text-[24px] relative cursor-pointer"
+              onClick={() => setOpenCart(!OpenCart)}
+            >
+              <div className=" p-1">
+                <AiOutlineShoppingCart className="text-[22px] text-black" />
+              </div>
+              <div className="text-redPrimmary rounded-full bg-white text-[14px]  absolute -bottom-2 -right-2 flex items-center justify-center border w-5 h-5">
+                <span> {CartItems.length}</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex  gap-8 w-full justify-center font-LexendDeca font-extralight">
@@ -117,7 +135,7 @@ const Header = () => {
                                     <div key={idx}>
                                       <div className=" group/lv2    relative font-light     border-b">
                                         <Link
-                                          href={`${`/san-pham/${items.typeUrl}`}`}
+                                          href={`${`/san-pham/${items.parentUrl}?type=${items.typeUrl}`}`}
                                         >
                                           <div className="py-2 px-4 hover:text-blue-400 duration-300  bg-white font-light flex items-center justify-between w-full">
                                             <p>{items.type}</p>
@@ -140,20 +158,32 @@ const Header = () => {
           ))}
         </div>
       </div>
-      <div className="d:hidden p:block w-full   ">
+      <div className="d:hidden p:block w-full  font-LexendDeca font-extralight ">
         <div className="flex justify-between px-2 items-center">
-          <div className="">
-            <img
-              src="https://file.hstatic.net/200000235187/file/logohome_b583c2c7d30b40f68d0d0450c6d7243d.jpg"
-              alt="logo"
-            />
-          </div>
           <div className="flex">
-            <div className="border p-1 border-black">
+            <div className="p-1">
               <FaListUl
                 className="text-[22px] text-black"
                 onClick={() => setOpen(true)}
               />
+            </div>
+          </div>
+          <Link href={`/`} className="">
+            <img
+              src={TradeMarkData.websiteLogo}
+              alt="logo"
+              className="h-[70px]"
+            />
+          </Link>
+          <div
+            className="text-[24px] relative cursor-pointer"
+            onClick={() => setOpenCart(!OpenCart)}
+          >
+            <div className=" p-1">
+              <AiOutlineShoppingCart className="text-[22px] text-black" />
+            </div>
+            <div className="text-redPrimmary rounded-full bg-white text-[14px]  absolute -bottom-2 -right-2 flex items-center justify-center border w-5 h-5">
+              <span> {CartItems.length}</span>
             </div>
           </div>
         </div>
@@ -164,41 +194,74 @@ const Header = () => {
           onClose={() => setOpen(false)}
           closable={false}
           open={open}
-          bodyStyle={{ backgroundColor: "#2e3192" }}
+          width={300}
         >
-          <div className="bg-[#2e3192] text-white uppercase font-bold">
-            <div className="flex flex-col gap-3" onClick={() => setOpen(false)}>
-              {HeaderItems.map((items: any, idx: any) => (
-                <Link
-                  className=" hover:text-mainorange"
-                  href={`/${items.link}`}
-                  key={idx}
-                >
-                  {items.name}
-                </Link>
+          <div className="bg-white text-black  ">
+            <div className="flex  justify-center  ">
+              <img
+                src={TradeMarkData.websiteLogo}
+                alt="logo"
+                className="h-[70px]"
+              />
+            </div>
+            <div className="flex flex-col ">
+              {HeaderItems.slice(1).map((items: any, idx: any) => (
+                <div key={idx}>
+                  <div className="flex justify-between w-full  border-t items-center">
+                    <Link
+                      className=" py-2 uppercase"
+                      href={`/${items.link}`}
+                      key={idx}
+                      onClick={() => setOpen(false)}
+                    >
+                      {items.name}
+                    </Link>
+                    {items.name === "Hỗ trợ" && (
+                      <AiOutlineRight
+                        className={`${
+                          show ? "rotate-90" : "rotate-0"
+                        } text-[10px]  duration-300`}
+                        onClick={() => setShow(!show)}
+                      />
+                    )}
+                  </div>
+
+                  {items.name === "Hỗ trợ" && (
+                    <div
+                      className={`${
+                        show ? "h-[74px]" : "h-0"
+                      } duration-300 overflow-hidden`}
+                    >
+                      {SupportItems.map((items: any, idx: number) => (
+                        <Link
+                          onClick={() => setOpen(false)}
+                          key={idx}
+                          href={`/bai-viet/${items.value}`}
+                          className={` w-full  border-t  `}
+                        >
+                          <p className="py-2 px-2 hover:text-blue-400 duration-300 ">
+                            {" "}
+                            {items.label}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
-            {/* <div
-              className="flex flex-col gap-3 text-[14px] mt-10"
-              onClick={() => setOpen(false)}
-            >
-              {mainHeaderItems.map((items: any, idx: any) => (
-                <Link
-                  className=" hover:text-mainorange"
-                  href={`/${items.link}`}
-                  key={idx}
-                >
-                  {items.name}
-                </Link>
-              ))}
-            </div> */}
-            <div
-              className="flex justify-center mt-5"
-              onClick={() => setOpen(false)}
-            >
-              <Link href={`/lien-he`}>
-                <div className="px-10 py-1 rounded-full border">Liên hệ</div>
-              </Link>
+
+            <div className="flex flex-col py-2 border-t gap-5">
+              <h2 className="uppercase font-normal">Bạn cần hỗ trợ?</h2>
+              <div className="flex gap-5 items-center font-medium ">
+                <TbPhoneCall className="text-[24px] " />
+                <p>Liên hệ: {ContactData.phone}</p>
+              </div>
+              <div className="flex gap-5 items-center font-medium">
+                <AiOutlineMail className="text-[24px] " />
+
+                <p>{ContactData.gmail}</p>
+              </div>
             </div>
           </div>
         </Drawer>
