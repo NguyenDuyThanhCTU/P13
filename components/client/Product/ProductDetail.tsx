@@ -278,7 +278,7 @@ const ProductDetail = () => {
             </h3>
             <div>
               {similarProduct?.map((item: any, idx: number) => (
-                <>
+                <Link href={`/chi-tiet-san-pham/${item.url}`}>
                   <div className="flex gap-3 py-3 border-b" key={idx}>
                     <div className="flex-[30%]">
                       <img src={item.image} alt="similarProduct" />
@@ -296,7 +296,7 @@ const ProductDetail = () => {
                       </div>
                     </div>
                   </div>
-                </>
+                </Link>
               ))}
             </div>
           </div>

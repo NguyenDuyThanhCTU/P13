@@ -41,7 +41,6 @@ const ProductPage = async ({
         searchParams?.type
       );
     }
-    console.log(params.slug, searchParams);
   } else {
     Data = await getDataByTypeProps("products", "parentUrl", params.slug);
   }

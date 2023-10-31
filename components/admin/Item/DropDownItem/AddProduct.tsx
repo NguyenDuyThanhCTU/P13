@@ -34,11 +34,12 @@ const AddProduct = ({}) => {
   const [isChildren, setIsChildren] = useState<any>();
   const [typeUrl, setTypeUrl] = useState<string | undefined>();
   const [parentUrl, setParentUrl] = useState<string | undefined>();
-  const [childrenUrl, setChildrenUrl] = useState<string | undefined>();
   const [ListSubImage, setListSubImage] = useState<any>([]);
 
   const [ProductFunction, setProductFunction] = useState<any>();
+  const [ProductFunctionUrl, setProductFunctionUrl] = useState<any>();
   const [ProductPrice, setProductPrice] = useState<any>();
+  const [ProductPriceUrl, setProductPriceUrl] = useState<any>();
 
   const { setDropDown, setIsRefetch } = useStateProvider();
   const { productTypes } = useData();
@@ -81,7 +82,6 @@ const AddProduct = ({}) => {
     setIsChildren("");
     setTypeUrl("");
     setParentUrl("");
-    setChildrenUrl("");
     setListSubImage([]);
     setImageUrl("");
   };
@@ -112,6 +112,8 @@ const AddProduct = ({}) => {
         access: Math.floor(Math.random() * (10000 - 100 + 1)) + 100,
         subimage: ListSubImage,
         function: ProductFunction,
+        functionUrl: ProductFunctionUrl,
+        priceSegmentUrl: ProductPriceUrl,
         priceSegment: ProductPrice,
       };
 
@@ -120,7 +122,6 @@ const AddProduct = ({}) => {
           delete data[key];
         }
       }
-
       addDocument("products", data).then(() => {
         notification["success"]({
           message: "Tải lên thành công!",
@@ -165,6 +166,23 @@ const AddProduct = ({}) => {
       (item: any) => item.uid !== file.uid
     );
     setImageUrl(newImageUrl);
+  };
+
+  const handleOption = (values: any, type: string) => {
+    if (type === "function") {
+      const sort = ProductFunctionType.filter(
+        (items: any) => items.value === values
+      );
+      setProductFunction(sort[0].label);
+      setProductFunctionUrl(sort[0].value);
+    } else {
+      const sort = ProductPriceItems.filter(
+        (items: any) => items.value === values
+      );
+
+      setProductPrice(sort[0].label);
+      setProductPriceUrl(sort[0].value);
+    }
   };
 
   return (
@@ -280,7 +298,7 @@ const AddProduct = ({}) => {
                     {productTypes
                       ?.filter((item: any) => item.parent === isParent)
                       .map((item: any, idx: any) => (
-                        <Option value={item.type} label={item.type}>
+                        <Option key={idx} value={item.type} label={item.type}>
                           <Space>{item.type}</Space>
                         </Option>
                       ))}
@@ -297,11 +315,11 @@ const AddProduct = ({}) => {
                     <Select
                       style={{ width: "100%" }}
                       placeholder="Chọn loại bài viết"
-                      onChange={setProductFunction}
+                      onChange={(e) => handleOption(e, "function")}
                       optionLabelProp="label"
                     >
                       {ProductFunctionType.map((item: any, idx: any) => (
-                        <Option value={item.label} label={item.label} key={idx}>
+                        <Option value={item.value} label={item.label} key={idx}>
                           <Space>{item.label}</Space>
                         </Option>
                       ))}
@@ -314,11 +332,11 @@ const AddProduct = ({}) => {
                     <Select
                       style={{ width: "100%" }}
                       placeholder="Chọn loại bài viết"
-                      onChange={setProductPrice}
+                      onChange={(e) => handleOption(e, "price")}
                       optionLabelProp="label"
                     >
                       {ProductPriceItems.map((item: any, idx: any) => (
-                        <Option value={item.label} label={item.label} key={idx}>
+                        <Option value={item.value} label={item.label} key={idx}>
                           <Space>{item.label}</Space>
                         </Option>
                       ))}

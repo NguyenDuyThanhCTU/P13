@@ -32,6 +32,7 @@ const Header = () => {
       value: "catalogue-san-pham",
     },
   ];
+  console.log(productTypes);
   return (
     <div className="shadow-xl">
       {/* <div className="bg-blue-400 py-1 h-[30px] w-full text-white text-[14px] flex justify-center items-center">
@@ -105,7 +106,7 @@ const Header = () => {
                     <div className=" flex flex-col bg-white shadow-md border-t-2 border-gray-500 ">
                       {TypeProductItems.map((items: any, idx: number) => {
                         const sort = productTypes.filter(
-                          (item: any) => item.parentUrl === items.value
+                          (data: any) => data.parent === items.label
                         );
 
                         return (
