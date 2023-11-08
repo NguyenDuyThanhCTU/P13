@@ -22,6 +22,7 @@ const Header = () => {
 
   const [open, setOpen] = React.useState(false);
   const [show, setShow] = React.useState(false);
+  const [showchild, setShowchild] = React.useState(0);
   const SupportItems = [
     {
       label: "Hướng dẫn sử dụng",
@@ -32,7 +33,14 @@ const Header = () => {
       value: "catalogue-san-pham",
     },
   ];
-  console.log(productTypes);
+
+  const HandleSelect = (idx: number) => {
+    if (showchild === idx) {
+      setShowchild(0);
+    } else {
+      setShowchild(idx);
+    }
+  };
   return (
     <div className="shadow-xl">
       {/* <div className="bg-blue-400 py-1 h-[30px] w-full text-white text-[14px] flex justify-center items-center">
@@ -218,12 +226,24 @@ const Header = () => {
                       {items.name}
                     </Link>
                     {items.name === "Hỗ trợ" && (
-                      <AiOutlineRight
-                        className={`${
-                          show ? "rotate-90" : "rotate-0"
-                        } text-[10px]  duration-300`}
-                        onClick={() => setShow(!show)}
-                      />
+                      <div className="p-4">
+                        <AiOutlineRight
+                          className={`${
+                            show ? "rotate-90" : "rotate-0"
+                          } text-[10px]  duration-300`}
+                          onClick={() => setShow(!show)}
+                        />
+                      </div>
+                    )}
+                    {items.name === "Danh mục sản phẩm" && (
+                      <div className="p-4">
+                        <AiOutlineRight
+                          className={`${
+                            show ? "rotate-90" : "rotate-0"
+                          } text-[10px]  duration-300  `}
+                          onClick={() => setShow(!show)}
+                        />
+                      </div>
                     )}
                   </div>
 
@@ -246,6 +266,68 @@ const Header = () => {
                           </p>
                         </Link>
                       ))}
+                    </div>
+                  )}
+                  {items.name === "Danh mục sản phẩm" && (
+                    <div
+                      className={`${
+                        show ? "h-max" : "h-0"
+                      } duration-300 overflow-hidden`}
+                    >
+                      {TypeProductItems.map((items: any, idx: number) => {
+                        const sort = productTypes.filter(
+                          (data: any) => data.parent === items.label
+                        );
+
+                        return (
+                          <div key={idx}>
+                            <div className="flex justify-between w-full items-center">
+                              <Link
+                                onClick={() => setOpen(false)}
+                                key={idx}
+                                href={`/bai-viet/${items.value}`}
+                                className={` w-full   `}
+                              >
+                                <p className="py-2 px-2 hover:text-blue-400 duration-300 text-gray-900 ">
+                                  {" "}
+                                  {items.label}
+                                </p>
+                              </Link>
+                              {sort.length > 0 && (
+                                <div className="p-4">
+                                  <AiOutlineRight
+                                    className={`${
+                                      show ? "rotate-90" : "rotate-0"
+                                    } text-[10px]  duration-300`}
+                                    onClick={() => HandleSelect(idx + 1)}
+                                  />
+                                </div>
+                              )}
+                            </div>
+                            {sort.length > 0 && (
+                              <div
+                                className={`${
+                                  showchild === idx + 1 ? "h-max" : "h-0"
+                                } duration-300 overflow-hidden ml-2`}
+                              >
+                                {sort.map((items: any, idx: number) => (
+                                  <Link
+                                    onClick={() => setOpen(false)}
+                                    key={idx}
+                                    href={`/bai-viet/${items.value}`}
+                                    className={` w-full  border-t  `}
+                                  >
+                                    <p className="py-2 px-2 hover:text-blue-400 duration-300  text-gray-400">
+                                      {" "}
+                                      {items.type}
+                                    </p>
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
                 </div>

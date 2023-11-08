@@ -369,42 +369,46 @@ export const TypeProductItems = [
     value: "thiet-bi-nha-thong-minh",
   },
 
-  {
-    label: "Bộ khóa cổng inox",
-    value: "bo-khoa-cong-inox",
-  },
-  {
-    label: "Bộ khóa vân tay Hàn Quốc",
-    value: "bo-khoa-van-tay-han-quoc",
-  },
-  {
-    label: "Bộ khóa cổng",
-    value: "bo-khoa-cong",
-  },
-  {
-    label: "Bộ từ hút - chốt thả",
-    value: "bo-tu-hut-chot-tha",
-  },
+  // {
+  //   label: "Bộ khóa cổng inox",
+  //   value: "bo-khoa-cong-inox",
+  // },
+  // {
+  //   label: "Bộ khóa vân tay Hàn Quốc",
+  //   value: "bo-khoa-van-tay-han-quoc",
+  // },
+  // {
+  //   label: "Bộ khóa cổng",
+  //   value: "bo-khoa-cong",
+  // },
+  // {
+  //   label: "Bộ từ hút - chốt thả",
+  //   value: "bo-tu-hut-chot-tha",
+  // },
   {
     label: "Khóa cửa vân tay",
     value: "khoa-cua-van-tay",
   },
   {
-    label: "Khóa Khách Sạn (Chung Cư) / Khóa Tủ",
-    value: "khóa-khach-san-chung-cu-khoa-tu",
+    label: "Công tắc thông minh",
+    value: "cong-tac-thong-minh",
   },
-  {
-    label: "Kiểm soát cửa - Thiết bị Access Control",
-    value: "kiem-soat-cua-thiet-bi-access-control",
-  },
-  {
-    label: "Cửa tự động - Motor tự động",
-    value: "cua-tu-dong-motor-tu-dong",
-  },
-  {
-    label: "Hệ thống khác",
-    value: "he-thong-khac",
-  },
+  // {
+  //   label: "Khóa Khách Sạn (Chung Cư) / Khóa Tủ",
+  //   value: "khóa-khach-san-chung-cu-khoa-tu",
+  // },
+  // {
+  //   label: "Kiểm soát cửa - Thiết bị Access Control",
+  //   value: "kiem-soat-cua-thiet-bi-access-control",
+  // },
+  // {
+  //   label: "Cửa tự động - Motor tự động",
+  //   value: "cua-tu-dong-motor-tu-dong",
+  // },
+  // {
+  //   label: "Hệ thống khác",
+  //   value: "he-thong-khac",
+  // },
 ];
 
 export const ProductFunctionType = [
