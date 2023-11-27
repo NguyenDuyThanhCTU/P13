@@ -79,7 +79,7 @@ const Fetch: React.FC = () => {
     getProducts("posts").then((data: any) => {
       setPosts(data);
     });
-    getProducts("products").then((data: any) => {
+    getAllDocuments("products").then((data: any) => {
       setProducts(data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -139,7 +139,7 @@ const Fetch: React.FC = () => {
       });
       setIsRefetch("done");
     } else if (isRefetch === "CRUD products") {
-      getProducts("products").then((data: any) => {
+      getAllDocuments("products").then((data: any) => {
         setProducts(data);
       });
     } else if (isRefetch === "CRUD posts") {

@@ -285,11 +285,10 @@ const Header = () => {
                               <Link
                                 onClick={() => setOpen(false)}
                                 key={idx}
-                                href={`/bai-viet/${items.value}`}
+                                href={`/san-pham/${items.value}`}
                                 className={` w-full   `}
                               >
                                 <p className="py-2 px-2 hover:text-blue-400 duration-300 text-gray-900 ">
-                                  {" "}
                                   {items.label}
                                 </p>
                               </Link>
@@ -314,7 +313,7 @@ const Header = () => {
                                   <Link
                                     onClick={() => setOpen(false)}
                                     key={idx}
-                                    href={`/bai-viet/${items.value}`}
+                                    href={`${`/san-pham/${items.parentUrl}?type=${items.typeUrl}`}`}
                                     className={` w-full  border-t  `}
                                   >
                                     <p className="py-2 px-2 hover:text-blue-400 duration-300  text-gray-400">

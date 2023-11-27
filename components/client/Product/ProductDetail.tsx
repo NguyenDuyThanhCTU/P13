@@ -68,6 +68,7 @@ const ProductDetail = () => {
       setOpenCart(true);
     }
   };
+
   const items = [
     {
       key: "1",
