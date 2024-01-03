@@ -8,9 +8,9 @@ const HomePage = () => {
   return (
     <div>
       <Slide />
-      <HomeDisplay topic={"Sản phẩm mới"} />
+      <HomeDisplay topic={"Khóa cửa vân tay"} />
       {/* <Introduction /> */}
-      <HomeDisplay topic={"Sản phẩm bán chạy "} />
+      <HomeDisplay topic={"Motor cổng tự động"} />
       {/* <About /> */}
     </div>
   );

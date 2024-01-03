@@ -256,14 +256,14 @@ export const HeaderItems = [
     name: "Danh mục sản phẩm",
     link: "san-pham/khoa-cua-van-tay",
   },
-  {
-    name: "Sản phẩm",
-    link: "san-pham/tat-ca",
-  },
-  {
-    name: "Dịch vụ",
-    link: "dich-vu",
-  },
+  // {
+  //   name: "Sản phẩm",
+  //   link: "san-pham/tat-ca",
+  // },
+  // {
+  //   name: "Dịch vụ",
+  //   link: "dich-vu",
+  // },
   {
     name: "Công trình thực tế",
     link: "cong-trinh-thuc-te",
@@ -364,10 +364,6 @@ export const TypeProductItems = [
     label: "Motor cổng tự động",
     value: "motor-cong-tu-dong",
   },
-  {
-    label: "Thiết bị nhà thông minh",
-    value: "thiet-bi-nha-thong-minh",
-  },
 
   // {
   //   label: "Bộ khóa cổng inox",
@@ -389,10 +385,7 @@ export const TypeProductItems = [
     label: "Khóa cửa vân tay",
     value: "khoa-cua-van-tay",
   },
-  {
-    label: "Công tắc thông minh",
-    value: "cong-tac-thong-minh",
-  },
+
   // {
   //   label: "Khóa Khách Sạn (Chung Cư) / Khóa Tủ",
   //   value: "khóa-khach-san-chung-cu-khoa-tu",

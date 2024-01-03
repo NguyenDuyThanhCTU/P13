@@ -16,10 +16,10 @@ const ProductCard = ({ Data }: any) => {
                 className="w-full h-full hover:scale-110 duration-300"
               />
             </div>
-            <h3 className=" mt-2 truncate1 d:text-[16px] p:text-[14px] font-normal">
+            <h3 className=" mt-2 truncate1 d:text-[16px] p:text-[14px] font-normal text-center">
               {Data.title}
             </h3>
-            <p className="text-redPrimmary font-light">{Data.price}₫</p>
+            <p className="text-redPrimmary font-light">{Data.price}</p>
           </div>
 
           <div className="flex w-full justify-between pl-2 py-4 d:text-[16px] p:text-[12px]">

@@ -56,7 +56,9 @@ const ProductPage = async ({
       </div>
       <div className="p:w-auto p:mx-2 d:w-[1460px] d:mx-auto">
         <div className="py-5 flex gap-5 d:flex-row p:flex-col">
-          <DisplayProduct />
+          <div className="d:block p:hidden">
+            <DisplayProduct />
+          </div>
           <div>
             <h1 className="text-[28px] font-semibold font-LexendDeca pb-5">
               {Data.length > 0 ? (
