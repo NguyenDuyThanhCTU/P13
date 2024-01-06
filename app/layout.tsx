@@ -4,6 +4,8 @@ import { AuthProviders } from "@context/AuthProviders";
 import { DataProviders } from "@context/DataProviders";
 import { StateProvider } from "@context/StateProvider";
 import "@styles/global.css";
+import { GoogleTagManager } from "@next/third-parties/google";
+import Head from "next/head";
 
 export default function RootLayout({
   children,
@@ -12,6 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <title>hihi</title>
+      </Head>
       <body>
         <StateProvider>
           <DataProviders>
@@ -19,6 +24,7 @@ export default function RootLayout({
               <Fetch />
               <Loading />
               <>{children}</>
+              <GoogleTagManager gtmId="GTM-52VRDDW4" />
             </AuthProviders>
           </DataProviders>
         </StateProvider>
